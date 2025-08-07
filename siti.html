@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa San Leonardo - Benvenuti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+    header { background: url('https://source.unsplash.com/1600x600/?beach,italy') center/cover no-repeat; height: 80vh; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+    header h1 { font-size: 3rem; }
+    nav { background: #fff; padding: 1em; display: flex; justify-content: center; gap: 2em; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    nav a { text-decoration: none; color: #333; font-weight: bold; }
+    section { padding: 4em 2em; max-width: 1000px; margin: auto; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2em; margin-top: 2em; }
+    .feature-box { background: white; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    .feature-box img { width: 60px; margin-bottom: 1em; }
+    footer { text-align: center; padding: 2em; background: #333; color: white; margin-top: 4em; }
+    .btn { background: #0077cc; color: white; padding: 0.75em 1.5em; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 1em; }
+    .gallery img { width: 100%; border-radius: 8px; transition: transform 0.3s ease; }
+    .gallery img:hover { transform: scale(1.05); }
+    iframe { width: 100%; height: 500px; border: none; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Casa San Leonardo</h1>
+  </header>
+  
+  <nav>
+    <a href="#descrizione">Descrizione</a>
+    <a href="#prenotazioni">Prenotazioni</a>
+    <a href="#galleria">Galleria</a>
+    <a href="#disponibilita">Disponibilità</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+
+  <section id="descrizione">
+    <h2>Benvenuti nella vostra casa vacanze ideale</h2>
+    <p>Casa San Leonardo si trova a pochi passi dal mare nella splendida zona di Crotone. Perfetta per famiglie e gruppi fino a 5 persone, la casa offre tutti i comfort: aria condizionata, connessione Wi-Fi veloce, due camere da letto, soggiorno, cucina attrezzata e bagno.</p>
+    <div class="features">
+      <div class="feature-box">
+        <img src="https://img.icons8.com/ios-filled/100/air-conditioner.png" alt="Aria Condizionata">
+        <h3>Aria Condizionata</h3>
+      </div>
+      <div class="feature-box">
+        <img src="https://img.icons8.com/ios-filled/100/wifi.png" alt="Wi-Fi">
+        <h3>Wi-Fi Gratuito</h3>
+      </div>
+      <div class="feature-box">
+        <img src="https://img.icons8.com/ios-filled/100/beach.png" alt="Spiaggia">
+        <h3>A 3 minuti dal mare</h3>
+      </div>
+      <div class="feature-box">
+        <img src="https://img.icons8.com/ios-filled/100/family.png" alt="Famiglie">
+        <h3>Ideale per famiglie</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="prenotazioni">
+    <h2>Prenota il tuo soggiorno</h2>
+    <p>Prezzo base: <strong>80€ al giorno</strong> (modulabile in base alla stagione). La prenotazione è confermata con una caparra pari al 20% del totale. Puoi scegliere tra bonifico o PayPal.</p>
+    <form action="#" method="post">
+      <label>Nome completo:<br><input type="text" required></label><br><br>
+      <label>Email:<br><input type="email" required></label><br><br>
+      <label>Data arrivo:<br><input type="date" required></label><br><br>
+      <label>Data partenza:<br><input type="date" required></label><br><br>
+      <label>Metodo di pagamento:<br>
+        <select required>
+          <option value="paypal">PayPal</option>
+          <option value="bonifico">Bonifico bancario</option>
+        </select>
+      </label><br><br>
+      <button class="btn" type="submit">Invia richiesta</button>
+    </form>
+  </section>
+
+  <section id="galleria">
+    <h2>Galleria fotografica</h2>
+    <div class="gallery">
+      <img src="https://source.unsplash.com/800x500/?apartment,interior" alt="Interno 1">
+      <img src="https://source.unsplash.com/800x501/?kitchen,apartment" alt="Cucina">
+      <img src="https://source.unsplash.com/800x502/?bedroom,vacation" alt="Camera da letto">
+    </div>
+  </section>
+
+  <section id="disponibilita">
+    <h2>Disponibilità</h2>
+    <p>Controlla il calendario qui sotto per verificare le date disponibili prima di prenotare:</p>
+    <iframe src="https://calendar.google.com/calendar/embed?src=yourcalendar%40gmail.com&ctz=Europe%2FRome"></iframe>
+  </section>
+
+  <section id="contatti">
+    <h2>Contatti</h2>
+    <p>Email: <a href="mailto:grussell@hotmail.it">grussell@hotmail.it</a></p>
+    <p>Caparra tramite PayPal: <a href="#">paypal.me/casasanleonardo</a></p>
+    <p>Dati bonifico: IT00A0000000000000000000000 - Intestato a: Mario Rossi</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Casa San Leonardo - Tutti i diritti riservati</p>
+  </footer>
+</body>
+</html>
