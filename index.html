@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casa San Leonardo - Affitto Appartamento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header, footer {
+      text-align: center;
+      padding: 10px 0;
+      background: #004080;
+      color: white;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    h1, h2 {
+      color: #004080;
+    }
+    section {
+      margin-bottom: 30px;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003366;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 6px;
+    }
+    .payment-links a {
+      display: inline-block;
+      margin-right: 15px;
+      margin-top: 10px;
+      background-color: #0070ba;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .payment-links a:hover {
+      background-color: #004c99;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Casa San Leonardo</h1>
+  <p>Affitto appartamento a Crotone - Ideale per famiglie, 5 posti letto</p>
+</header>
+
+<section id="descrizione">
+  <h2>Descrizione</h2>
+  <p>
+    Casa San Leonardo offre un soggiorno confortevole con:<br>
+    - Due camere da letto<br>
+    - Un bagno<br>
+    - Soggiorno e cucina attrezzata<br>
+    - Aria condizionata<br>
+    - Servizio internet Wi-Fi<br>
+    - Distanza 3 minuti dal mare<br>
+    - Ideale per famiglie<br>
+    - 5 posti letto<br>
+    Prezzo base: <strong>80 € al giorno</strong> (modulabile a seconda del periodo)
+  </p>
+</section>
+
+<section id="disponibilita">
+  <h2>Disponibilità</h2>
+  <p>Consulta il calendario per verificare le date libere.</p>
+  <!-- Google Calendar pubblico incorporato -->
+  <iframe src="https://calendar.google.com/calendar/embed?src=it.it%23holiday%40group.v.calendar.google.com&ctz=Europe%2FRome" style="border:solid 1px #777" scrolling="no"></iframe>
+  <p class="note"><em>* Calendario di esempio, sarà sostituito con il tuo calendario pubblico reale.</em></p>
+</section>
+
+<section id="prenotazione">
+  <h2>Prenota ora</h2>
+  <p>Compila il modulo per richiedere la prenotazione. La caparra è pari al 20% del totale soggiorno (calcolato come numero di giorni × prezzo giornaliero × 20%).</p>
+  <form id="booking-form" onsubmit="return validateForm()" method="POST" action="https://formspree.io/f/mnqplqnl">
+    <label for="nome">Nome completo *</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="telefono">Telefono</label>
+    <input type="tel" id="telefono" name="telefono" />
+
+    <label for="data-arrivo">Data di arrivo *</label>
+    <input type="date" id="data-arrivo" name="data-arrivo" required />
+
+    <label for="data-partenza">Data di partenza *</label>
+    <input type="date" id="data-partenza" name="data-partenza" required />
+
+    <label for="ospiti">Numero di ospiti *</label>
+    <select id="ospiti" name="ospiti" required>
+      <option value="" disabled selected>Seleziona</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <label for="pagamento">Metodo di pagamento *</label>
+    <select id="pagamento" name="pagamento" required onchange="showPaymentInfo()">
+      <option value="" disabled selected>Seleziona</option>
+      <option value="paypal">PayPal (conferma immediata)</option>
+      <option value="bonifico">Bonifico bancario (conferma dopo ricezione pagamento)</option>
+    </select>
+
+    <div id="paypal-info" style="display:none; margin-top:10px;">
+      <p>Per pagare la caparra (20% del totale), usa questo link PayPal:</p>
+      <a href="https://www.paypal.me/fakeuser/40" target="_blank" rel="noopener noreferrer" class="payment-link">Paga con PayPal</a>
+      <p class="note">Importo indicativo. Ti invieremo il link personalizzato dopo la prenotazione.</p>
+    </div>
+
+    <div id="bonifico-info" style="display:none; margin-top:10px;">
+      <p>Ecco le coordinate bancarie per il bonifico:</p>
+      <ul>
+        <li>Intestatario: <strong>Mario Rossi</strong></li>
+        <li>IBAN: <strong>IT00X0000000000000000000000</strong></li>
+        <li>Causale: <em>Caparra Casa San Leonardo – [Nome] – [Data prenotazione]</em></li>
+      </ul>
+      <p class="note">La prenotazione sarà confermata solo dopo ricezione del bonifico.</p>
+    </div>
+
+    <label for="note">Note (es. esigenze particolari)</label>
+    <textarea id="note" name="note" rows="3"></textarea>
+
+    <button type="submit">Invia richiesta prenotazione</button>
+  </form>
+</section>
+
+<section id="contatti">
+  <h2>Contatti</h2>
+  <p>Per qualsiasi informazione, contattaci:</p>
+  <ul>
+    <li>Email: <a href="mailto:fakeemail@example.com">fakeemail@example.com</a></li>
+    <li>Telefono: +39 0123 456789</li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2025 Casa San Leonardo - Tutti i diritti riservati</p>
+</footer>
+
+<script>
+  function showPaymentInfo() {
+    const metodo = document.getElementById('pagamento').value;
+    document.getElementById('paypal-info').style.display = metodo === 'paypal' ? 'block' : 'none';
+    document.getElementById('bonifico-info').style.display = metodo === 'bonifico' ? 'block' : 'none';
+  }
+
+  function validateForm() {
+    const arrivo = new Date(document.getElementById('data-arrivo').value);
+    const partenza = new Date(document.getElementById('data-partenza').value);
+    if (partenza <= arrivo) {
+      alert('La data di partenza deve essere successiva alla data di arrivo.');
+      return false;
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>
